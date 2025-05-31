@@ -24,9 +24,11 @@ public class Deck {
     }
 
     private final List<Card> cards;
+    private final List<Card> discardedCards;
 
     public Deck() {
         cards = new ArrayList<>();
+        discardedCards = new ArrayList<>();
         initializeDeck();
     }
 
@@ -57,6 +59,7 @@ public class Deck {
     public void head() {
         if (!cards.isEmpty()) {
             Card card = cards.remove(0);
+            discardedCards.add(card);
             System.out.println(card);
             System.out.println("Quedan " + cards.size() + " cartas en el deck.");
         } else {
@@ -69,6 +72,7 @@ public class Deck {
             Random rand = new Random();
             int index = rand.nextInt(cards.size());
             Card card = cards.remove(index);
+            discardedCards.add(card);
             System.out.println(card);
             System.out.println("Quedan " + cards.size() + " cartas en el deck.");
         } else {
@@ -80,6 +84,7 @@ public class Deck {
         if (cards.size() >= 5) {
             for (int i = 0; i < 5; i++) {
                 Card card = cards.remove(0);
+                discardedCards.add(card);
                 System.out.println(card);
             }
             System.out.println("Quedan " + cards.size() + " cartas en el deck.");
